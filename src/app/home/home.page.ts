@@ -18,11 +18,12 @@ export class HomePage {
     private opentripmapService: OpentripmapService,
     private modalController: ModalController
   ) {}
-  async ionViewDidEnter() {
-    try {
-      this.cityFound = await this.opentripmapService.getCityFromSearch(
-        environment.openTripMap.defaultCity
-      );
+  
+  async search(inputValue?: string) {
+    try {    
+        this.cityFound = await this.opentripmapService.getCityFromSearch(
+          inputValue? inputValue : environment.openTripMap.defaultCity
+          );        
       if (this.cityFound) {
         this.placesFound = await this.opentripmapService.getPlacesByLatLon(
           environment.openTripMap.radius,
@@ -30,14 +31,15 @@ export class HomePage {
           this.cityFound.lat,
           environment.openTripMap.rate,
           environment.openTripMap.formatJson
-        );
-        console.log("cityFound", this.cityFound)
-        console.log("placesFound", this.placesFound)
-        console.log("resultados", this.placesFound.length)
+        );      
       }
     } catch (error) {
       console.log(error);
     }
+  }
+
+  ionViewDidEnter() {
+   this.search()
   }
 
   async showDetailPlace(place: any) {
@@ -51,5 +53,9 @@ export class HomePage {
       },
     });
     return await modal.present();
+  }
+
+  searchWhitInputValue(inputValue: any) {    
+    this.search(inputValue.value)
   }
 }

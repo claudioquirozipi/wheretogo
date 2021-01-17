@@ -8,6 +8,8 @@
 </ion-header>
 <div class="resultsContent">
   <h1>Resultados: {{this.placesFound ? this.placesFound.length : 0}}</h1>
+  <ion-input value="" #inputValue placeholder="Escriba una ciudad"></ion-input>
+  <ion-button color="primary" (click)="searchWhitInputValue(inputValue)" >Buscar</ion-button>
 </div>
 <ion-content class="ion-padding">
   <div *ngIf="placesFound">
