@@ -20,6 +20,7 @@ export class HomePage {
   ) {}
   
   async search(inputValue?: string) {
+    this.placesFound = null;
     try {    
         this.cityFound = await this.opentripmapService.getCityFromSearch(
           inputValue? inputValue : environment.openTripMap.defaultCity
