@@ -6,6 +6,9 @@
     <ion-title>Principal</ion-title>
   </ion-toolbar>
 </ion-header>
+<div class="resultsContent">
+  <h1>Resultados: {{this.placesFound ? this.placesFound.length : 0}}</h1>
+</div>
 <ion-content class="ion-padding">
   <div *ngIf="placesFound">
     <ion-card

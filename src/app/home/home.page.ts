@@ -3,11 +3,13 @@ import { ModalController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { ModalplacePage } from '../modalplace/modalplace.page';
 import { OpentripmapService } from '../services/opentripmap.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
   placesFound: any[];
   cityFound: any;
@@ -29,6 +31,9 @@ export class HomePage {
           environment.openTripMap.rate,
           environment.openTripMap.formatJson
         );
+        console.log("cityFound", this.cityFound)
+        console.log("placesFound", this.placesFound)
+        console.log("resultados", this.placesFound.length)
       }
     } catch (error) {
       console.log(error);
