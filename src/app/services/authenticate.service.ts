@@ -27,7 +27,6 @@ export class AuthenticateService {
         user.email === credentials.email &&
         user.password === btoa(credentials.password)
     );
-
     if (this.userFilters.length > 0) {
       response = {
         error: false,

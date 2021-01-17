@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-myprofile',
@@ -11,7 +12,17 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MyprofilePage {
   photo: SafeResourceUrl;
   urlAvatarDefaultImage = environment.urlAvatarDefaultImage;
-  constructor(private sanitizer: DomSanitizer) {}
+  userData:any =  {};
+
+  constructor(private sanitizer: DomSanitizer,
+    private storage: Storage) {}
+
+  async ngOnInit() {
+    const responseAuthenticateUser = await this.storage.get("responseAuthenticateUser");
+    
+    this.userData = responseAuthenticateUser.data;
+    console.log("userData", this.userData)
+  }
   async takePhoto() {
     const image = await Plugins.Camera.getPhoto({
       quality: 100,

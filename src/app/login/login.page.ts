@@ -55,8 +55,10 @@ export class LoginPage {
       this.responseAuthenticateUser = await this.authenticateUser.signIn(
         credentials
       );
+      console.log("responseAuthenticateUser", this.responseAuthenticateUser)
       if (this.responseAuthenticateUser.isAuthenticated) {
         this.storage.set('isAuthenticated', true);
+        this.storage.set('responseAuthenticateUser', this.responseAuthenticateUser);
         this.navController.navigateForward('/menu/home');
       } else {
         this.messageAuthenticated = this.responseAuthenticateUser.message;

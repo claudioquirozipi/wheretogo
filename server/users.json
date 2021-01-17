@@ -6,6 +6,13 @@
       "email": "srdelarosab@gmail.com",
       "password": "cmVuYXRvMjExMw==",
       "id": 1
+    },
+    {
+      "firstName": "Claudio",
+      "lastName": "Quiroz",
+      "email": "claudio@gmail.com",
+      "password": "Y2xhdWRpbw==",
+      "id": 2
     }
   ]
 }
